@@ -2,20 +2,24 @@ package service;
 import java.sql.*;
 import java.util.Set;
 
-import model.student;
-public class StudentDAO 
+import model.Student;
+public class StudentManagement 
 {
         Boolean status = false; 
         static Connection con;
 	static PreparedStatement ps;
 	ResultSet rs;
 	//static student s;
-	public StudentDAO() throws SQLException
+	public StudentManagement() 
 	{
-		con = util.connection.getConnection();
+		try{
+			con = util.connection.getConnection();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
         
-        public Boolean searchStudent(student s) throws SQLException
+        public Boolean searchStudent(Student s) throws SQLException
         {
         	con = util.connection.getConnection();
             ps = con.prepareStatement("select * from Register where userid=? and password=?");
@@ -31,7 +35,7 @@ public class StudentDAO
             
 	 }
         
-        public Boolean insertStudent(student s) throws SQLException
+        public Boolean insertStudent(Student s) throws SQLException
         {
         	con = util.connection.getConnection();
             ps = con.prepareStatement("insert into Register values(?,?,?,?,?,?)");
@@ -49,7 +53,7 @@ public class StudentDAO
 	return status;		
         }
         
-        public ResultSet selectStudent(student s) throws SQLException
+        public ResultSet selectStudent(Student s) throws SQLException
         {
         	con = util.connection.getConnection();
         	PreparedStatement pstmt = con.prepareStatement("select * from Register");
@@ -57,9 +61,9 @@ public class StudentDAO
             return rs;    
         }
         
-        public static student getDetails(String userid)
+        public static Student getDetails(String userid)
         {
-        	student s=new student();
+        	Student s=new Student();
         	try {
 				con = util.connection.getConnection();
 				PreparedStatement ps=con.prepareStatement("select * from Register where userid=?"); 
@@ -72,7 +76,7 @@ public class StudentDAO
 	                s.setEmail(rs.getString(4));  
 	                s.setCity(rs.getString(5));  
 	                s.setPincode(rs.getString(6));
-	                System.out.println(rs.getString(6));
+	               // System.out.println(rs.getString(6));
 	            }  
 				
 			} catch (SQLException e) {
@@ -82,7 +86,7 @@ public class StudentDAO
 			return s;
         	
         }
-      public static int updateStudent(student s) throws SQLException
+      public static int updateStudent(Student s) throws SQLException
         {
         	
        
@@ -99,9 +103,23 @@ public class StudentDAO
             
             int status1 = ps.executeUpdate();
             
-            System.out.println(s.getUserid());
+          //  System.out.println(s.getUserid());
             return status1;
         }
+      
+      public static int deleteStudent(String userId) throws SQLException
+      {
+     
+      	  con = util.connection.getConnection();
+          ps = con.prepareStatement("delete from Register where userid=?");
+          
+         
+          ps.setString(1,userId);
+          
+          int status1 = ps.executeUpdate();
+          
+          return status1;
+      }
         
         
 }

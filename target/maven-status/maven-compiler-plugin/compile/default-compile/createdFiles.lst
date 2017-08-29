@@ -1,8 +1,0 @@
-controller/ViewServlet.class
-util/connection.class
-controller/Signup.class
-controller/EditServlet2.class
-model/student.class
-controller/Login.class
-controller/EditServlet.class
-service/StudentDAO.class

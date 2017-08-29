@@ -1,6 +1,6 @@
 package model;
 
-public class student {
+public class Student {
 	private String userid;
 	private String password;
 	private String mobileno;
