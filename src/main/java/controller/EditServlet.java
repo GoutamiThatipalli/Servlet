@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.student;
-import service.StudentDAO;
+import model.Student;
+import service.StudentManagement;
 
 /**
  * Servlet implementation class EditServlet
@@ -37,7 +37,7 @@ public class EditServlet extends HttpServlet {
         out.println("<h1>Update Student</h1>");  
         String userid=request.getParameter("userid");  
         try{ 
-        student st= service.StudentDAO.getDetails(userid);
+        Student st= service.StudentManagement.getDetails(userid);
         out.println("<html>");
 	    out.println("<head>");
 	    out.println("<body>");
@@ -56,7 +56,7 @@ public class EditServlet extends HttpServlet {
 	    out.println("</html>");
         }
         catch (NullPointerException e) {
-        	System.out.println("hiee");
+        	//System.out.println("hiee");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.student;
-import service.StudentDAO;
+import model.Student;
+import service.StudentManagement;
 
 /**
  * Servlet implementation class Login
@@ -35,7 +35,7 @@ public class Login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-student s = new student();
+Student s = new Student();
 response.setContentType("text/html;charset=UTF-8");
         
         PrintWriter out = response.getWriter();
@@ -44,9 +44,9 @@ response.setContentType("text/html;charset=UTF-8");
             s.setUserid(n);
             s.setPassword(p);
      
-            	StudentDAO sd;
+            	StudentManagement sd;
 				try {
-					sd = new StudentDAO();
+					sd = new StudentManagement();
             if(sd.searchStudent(s))
             {
             	response.sendRedirect("ViewServlet");

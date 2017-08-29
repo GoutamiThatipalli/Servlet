@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.student;
-import service.StudentDAO;
+import model.Student;
+import service.StudentManagement;
 
 /**
  * Servlet implementation class Signup
@@ -33,7 +33,7 @@ public class Signup extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("text/html;charset=UTF-8");
-		student s = new student();
+		Student s = new Student();
         PrintWriter out = response.getWriter();
         String n = request.getParameter("userid");
         String p = request.getParameter("password");
@@ -50,7 +50,7 @@ public class Signup extends HttpServlet {
         s.setPincode(pi);
         
         try {
-        	StudentDAO sd=new StudentDAO();
+        	StudentManagement sd=new StudentManagement();
 			if(sd.insertStudent(s))
 			{
 			    out.println("<!DOCTYPE html>");

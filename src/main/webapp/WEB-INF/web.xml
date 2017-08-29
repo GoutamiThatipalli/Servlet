@@ -64,6 +64,12 @@
   	<description></description>
   	<servlet-class>controller.ViewServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>DeleteServlet</servlet-name>
+  	<display-name>DeleteServlet</display-name>
+  	<description></description>
+  	<servlet-class>controller.DeleteServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>LoginServlet</servlet-name>
   	<url-pattern>/LoginServlet</url-pattern>
@@ -103,5 +109,9 @@
   <servlet-mapping>
   	<servlet-name>ViewServlet</servlet-name>
   	<url-pattern>/ViewServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>DeleteServlet</servlet-name>
+  	<url-pattern>/DeleteServlet</url-pattern>
   </servlet-mapping>
 </web-app>

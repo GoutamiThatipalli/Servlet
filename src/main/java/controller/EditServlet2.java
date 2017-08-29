@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.student;
-import service.StudentDAO;
+import model.Student;
+import service.StudentManagement;
 
 /**
  * Servlet implementation class EditServlet2
@@ -42,7 +42,7 @@ public class EditServlet2 extends HttpServlet {
         String c=request.getParameter("city");  
         String pi=request.getParameter("pincode");  
           
-        student st=new student();  
+        Student st=new Student();  
         st.setUserid(s);  
         st.setPassword(p);  
         st.setMobileno(m);  
@@ -52,7 +52,7 @@ public class EditServlet2 extends HttpServlet {
         
         int status;
 		try {
-			status = StudentDAO.updateStudent(st);
+			status = StudentManagement.updateStudent(st);
 			if(status>0){  
 	            response.sendRedirect("ViewServlet");  
 	        }else{  
