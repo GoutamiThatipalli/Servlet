@@ -1,1 +1,4 @@
-# Servlet
+ECLIPSE IDE
+MYSQL
+JDK
+TOMCAT 7
